@@ -3,13 +3,16 @@ const app = express();
 const https = require("https");
 
 app.get("/", function(req, res){
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=kerala&appid=09b78a2117cd91872406ad6a8723d983&units=metric";
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=kottayam&appid=09b78a2117cd91872406ad6a8723d983&units=metric";
 
     https.get(url, function(response){
         console.log(response.statusCode);
-        response.on("data", function(data))
+        response.on("data", function(data){
+            const weatherdata = JSON.parse(data);
+            console.log(weatherdata.main.temp);
+            res.send("<h1>the temperature is " + weatherdata.main.temp + " C</h1>");
+        });
     });
-    res.send("server is up and running");
 })
 
 app.listen(3000, function(){
