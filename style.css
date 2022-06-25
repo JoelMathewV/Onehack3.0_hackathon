@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    /* font-style: ; */
+    font-style: ;
 }
 .header{
     min-height: 100vh;
@@ -9,33 +9,49 @@
     background-image:linear-gradient(rgb(4,9,30,0.5),rgb(4,9,30,0.5)),url(images/tree-5120x2880-nature-ocean-landscape-5k-15297.jpg);
     background-position: center;
     background-size: cover;
-    position: relative;
+    position: fixed;
 }
-.row{
-    width: 90%;
-    color: #fff;
+.search{
+    margin-left: 80%;
+    margin-top: 4rem;
+    color: aliceblue;
+    
+}
+.one{
+    margin-top: 7%;
+    display:flex;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
+    margin-top: 20%;
+    justify-content: space-between;
 }
+.two{
 
+    background: #fff3f3;
 
-.hero-btn{
-    margin-top: 20px;
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    border: 1px solid #fff;
-    padding: 12px 34px;
-    font-size: 16px;
-    background: transparent;
-    position: relative;
-    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    justify-content: center;
+    padding-right: 100px ;
+    padding-left: 100px;
+    box-sizing: border-box;
+    transition: 0.5s;
 }
-.hero-btn:hover{
-    border: 1px solid #f44336;
-    background: #f44336;
-    transition: 1s;
+.two:hover{
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 1);
+}
+.three{
+    flex-basis: 31%;
+    background: #fff3f3;
+    background: ;
+    padding: 100px;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    margin-left: 100%;
+    padding: 20px 12 px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+.three:hover{
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 1);
 }
