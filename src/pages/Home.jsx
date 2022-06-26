@@ -11,8 +11,10 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import ReactRain from 'react-rain-animation'
 import Datee from '../components/date'
-
+import "react-rain-animation/lib/style.css";
+import Particles, { ISourceOptions } from "react-tsparticles";
 
 
 function Home() {
@@ -21,7 +23,8 @@ function Home() {
 //   var place="kerala"
       const [humi,setHumi]=useState("");
       const [pres,setPres]=useState(" ");
-      const [wind,setWind]=useState(" ")
+      const [wind,setWind]=useState(" ");
+      const [ima,setIma]=useState(" ");
 useEffect(()=>{
 
    weat(); 
@@ -29,10 +32,12 @@ useEffect(()=>{
 const weat=()=>{
     axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=09b78a2117cd91872406ad6a8723d983&units=metric").then((response)=>{
         console.log(response.data);
+        setIma(response.data.weather[0].icon)
         setTemp(response.data.main.temp);
         setHumi(response.data.main.humidity);
         setPres(response.data.main.pressure);
         setWind(response.data.wind.speed);
+
         console.log(humi)
         console.log(temp)
         
@@ -40,17 +45,21 @@ const weat=()=>{
        
         
     })
-
+    
     
    
    
  }
+ const imgurl = "http://openweathermap.org/img/wn/" + ima + "@2x.png";
 
  const prec=()=>{
   if(temp > 25 || humi > 50){
       if(wind > 4){
     return(
       <div>
+      <br></br>
+      <br></br>
+      <br></br>
      <li style={{listStyle:'none'}}>Stay safe</li>
      <li style={{listStyle:'none'}}>DRINK WATER </li>
      
@@ -61,6 +70,11 @@ const weat=()=>{
   else if(temp<18 || wind >4||humi<40){
     return(
       <div>
+      <br></br>
+      <br>
+
+      </br>
+
       <label> keep warm </label>
       <label > take shelter</label>
       </div>
@@ -69,6 +83,8 @@ const weat=()=>{
   else if(temp>32||wind>4){
     return(
       <div>
+      <br></br>
+      <br></br>
       <li >keep hydrated ,Drink water</li>
       <li>take shelter</li>
       </div>
@@ -88,7 +104,7 @@ const weat=()=>{
 
 <div    >
 
-
+     <ReactRain />
  
     <TextField label="enter place" color='primary'  autoComplete='default' variant='filled' style={{
       left:'calc(50% - 20rem)',
@@ -99,14 +115,15 @@ const weat=()=>{
 
       }}  value={place}  onChange={(e)=>{setPlace(e.target.value)}} > </TextField>
 
-<Button placeholder='Enter' variant='contained'style={{backgroundColor:'#000000',
+<Button placeholder='Enter' variant='contained'style={{backgroundColor:'#000001',
 top:'200px',
 left:' calc(50% - 25rem)',
-color:'red'}}  onClick={weat}>GO</Button>
+color:'wheat',
+boxShadow:'3px 2px 2px white'}}  onClick={weat}>GO</Button>
 <Box sx={{
   width: 230,
         height: 150,
-        opacity:0.4,
+        
          color:'black',
 
         borderRadius:'40px',
@@ -115,11 +132,12 @@ color:'red'}}  onClick={weat}>GO</Button>
      
 
         '&:hover': {
-          backgroundColor: 'white',
+          backgroundColor: 'mintcream',
          
         }
 
 }}>
+ <img src={imgurl} alt="loading" style={{width:'100px',height:'100px'}}></img>
 <Datee></Datee>
 </Box>
 <Box  
