@@ -53,29 +53,38 @@ const weat=()=>{
  const imgurl = "http://openweathermap.org/img/wn/" + ima + "@2x.png";
 
  const prec=()=>{
-  if(temp > 25 || humi > 50){
+  if(temp > 25 || humi < 50){
       if(wind > 4){
     return(
       <div>
+<<<<<<< HEAD
       <br></br>
       <br></br>
       <br></br>
      <li style={{listStyle:'none'}}>Stay safe</li>
      <li style={{listStyle:'none'}}>DRINK WATER </li>
+=======
+     <li style={{listStyle:'none'}}> Activating sprinkler system </li>
+     <li style={{listStyle:'none'}}>Collecting moisture data from the fields </li>
+>>>>>>> 570e933ed8010c9793142c17e52035f5dbc6e361
      
      </div>
 
   
   )}}
-  else if(temp<18 || wind >4||humi<40){
+  else if(temp<18 || wind >4||humi>50){
     return(
       <div>
+<<<<<<< HEAD
       <br></br>
       <br>
 
       </br>
 
       <label> keep warm </label>
+=======
+      <label>  </label>
+>>>>>>> 570e933ed8010c9793142c17e52035f5dbc6e361
       <label > take shelter</label>
       </div>
     )
