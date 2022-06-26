@@ -47,21 +47,21 @@ const weat=()=>{
  }
 
  const prec=()=>{
-  if(temp > 25 || humi > 50){
+  if(temp > 25 || humi < 50){
       if(wind > 4){
     return(
       <div>
-     <li style={{listStyle:'none'}}>Stay safe</li>
-     <li style={{listStyle:'none'}}>DRINK WATER </li>
+     <li style={{listStyle:'none'}}> Activating sprinkler system </li>
+     <li style={{listStyle:'none'}}>Collecting moisture data from the fields </li>
      
      </div>
 
   
   )}}
-  else if(temp<18 || wind >4||humi<40){
+  else if(temp<18 || wind >4||humi>50){
     return(
       <div>
-      <label> keep warm </label>
+      <label>  </label>
       <label > take shelter</label>
       </div>
     )
