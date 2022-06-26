@@ -1,8 +1,19 @@
-
 .body{
-    background-image: url('../images/climate.jpg');
-    height: 5000px;
 
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    
+   height: 3000px;
+
+}
+.front{
+    width:  900px;
+    height:900px;
+      position: absolute;
+
+
+    
+   
 }
 
 .card1{
@@ -10,4 +21,8 @@
     height: 15em;
     top: 40px;
     left: calc(50% + 2rem);
+}
+.clock{
+    margin-left: -20cm;
+    margin-top: 20px;
 }

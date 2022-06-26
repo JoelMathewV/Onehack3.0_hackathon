@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Datee from '../components/date'
 
 
 
@@ -18,8 +19,11 @@ function Home() {
     const [place,setPlace]= useState(" ")
     const [temp,setTemp]=useState( "");
 //   var place="kerala"
-      const [humi,setHumi]=useState("")
+      const [humi,setHumi]=useState("");
+      const [pres,setPres]=useState(" ");
+      const [wind,setWind]=useState(" ")
 useEffect(()=>{
+
    weat(); 
 },[]);
 const weat=()=>{
@@ -27,33 +31,97 @@ const weat=()=>{
         console.log(response.data);
         setTemp(response.data.main.temp);
         setHumi(response.data.main.humidity);
+        setPres(response.data.main.pressure);
+        setWind(response.data.wind.speed);
         console.log(humi)
         console.log(temp)
-
+        
+        
        
         
     })
+
+    
+   
+   
  }
+
+ const prec=()=>{
+  if(temp > 25 || humi > 50){
+      if(wind > 4){
+    return(
+      <div>
+     <li style={{listStyle:'none'}}>Stay safe</li>
+     <li style={{listStyle:'none'}}>DRINK WATER </li>
+     
+     </div>
+
+  
+  )}}
+  else if(temp<18 || wind >4||humi<40){
+    return(
+      <div>
+      <label> keep warm </label>
+      <label > take shelter</label>
+      </div>
+    )
+  }
+  else if(temp>32||wind>4){
+    return(
+      <div>
+      <li >keep hydrated ,Drink water</li>
+      <li>take shelter</li>
+      </div>
+    )
+  }
+ }
+
+ 
+ 
+
 
 
 
 
   return (
-    <div className='body'>
 
 
-<TextField label="enter place" color='secondary'  autoComplete='default' variant='outlined' style={{
-    left:'calc(50% - 20rem)',
-    top:'100px',
+<div    >
+
+
+ 
+    <TextField label="enter place" color='primary'  autoComplete='default' variant='filled' style={{
+      left:'calc(50% - 20rem)',
+      top:'100px',
+      backgroundColor:'silver',
+      borderRadius:'10px'
   
 
-}}  value={place}  onChange={(e)=>{setPlace(e.target.value)}} > </TextField>
+      }}  value={place}  onChange={(e)=>{setPlace(e.target.value)}} > </TextField>
 
 <Button placeholder='Enter' variant='contained'style={{backgroundColor:'#000000',
 top:'200px',
 left:' calc(50% - 25rem)',
 color:'red'}}  onClick={weat}>GO</Button>
+<Box sx={{
+  width: 230,
+        height: 150,
+        opacity:0.4,
+         color:'black',
 
+        borderRadius:'40px',
+        marginTop:'0.3rem',
+        marginLeft:'4rem',
+     
+
+        '&:hover': {
+          backgroundColor: 'white',
+         
+        }
+
+}}>
+<Datee></Datee>
+</Box>
 <Box  
 sx={{
         width: 300,
@@ -61,20 +129,26 @@ sx={{
         opacity:0.4,
         backgroundColor: 'wheat',
         borderRadius:'40px',
-        marginTop:'13rem',
+        marginTop:'7rem',
         marginLeft:'12rem',
         '&:hover': {
           backgroundColor: 'white',
           opacity: [0.9, 0.8, 0.7],
         },
       }}>
-      <label>Weather update</label>
+      <label>Weather update</label><br></br>
+      <br></br>
       <Typography align='center' variant='h2'>{temp+' °C'}</Typography>
-</Box>
-  
+      <Typography align='center' variant='h5'>{'Pressure :'+ pres+' Pa'}</Typography>
+ <Typography align='center' variant='h5'>{'Wind : '+ wind+' km/h'}</Typography>
+
+ <Typography align='center' variant='h5'>{'Humidity : '+ humi+' %'}</Typography>
+ 
+
+
 
    
-
+</Box>
   <Box  
 sx={{
         width: 300,
@@ -90,6 +164,7 @@ sx={{
         },
       }}>
       <label htmlFor="">Precautions </label>
+     {prec()}
       
 </Box>
   
@@ -101,6 +176,7 @@ sx={{
 
 
     </div>
+   
   )
 }
 
