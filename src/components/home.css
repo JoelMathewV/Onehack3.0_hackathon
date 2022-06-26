@@ -1,0 +1,13 @@
+
+.body{
+    background-image: url('../images/climate.jpg');
+    height: 5000px;
+
+}
+
+.card1{
+    width: 10rem;
+    height: 15em;
+    top: 40px;
+    left: calc(50% + 2rem);
+}
