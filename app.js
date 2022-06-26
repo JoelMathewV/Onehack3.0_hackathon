@@ -17,8 +17,13 @@ app.post("/", function(req, res){
         console.log(response.statusCode);
         response.on("data", function(data){
             const weatherdata = JSON.parse(data);
-            console.log(weatherdata.main.temp);
-            res.send("<h1>the temperature at " + place + " is " + weatherdata.main.temp + " C</h1>");
+            // console.log(weatherdata.main.temp);
+            // res.write(weatherdata.weather[0].description);
+            // res.write("<h1>the temperature at " + place + " is " + weatherdata.main.temp + " C</h1>");
+            // res.write("<h1>the max temperature at " + place + " is " + weatherdata.main.temp_max + " C</h1>");
+            res.write("<h1>the min temperature at " + place + " is " + weatherdata.main.temp_min + " C</h1>");
+            res.write("<h1>the humidity at " + place + " is " + weatherdata.main.humidity + " C</h1>");
+            res.send();
         });
     });
 });
